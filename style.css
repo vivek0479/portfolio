@@ -584,5 +584,115 @@ h1 {
   position: relative;
   z-index: 1;
 }
+/* HAMBURGER ICON */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
 
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  transition: all 0.35s ease;
+}
+
+/* MOBILE NAV */
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 14px 18px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+    background: rgba(15,23,42,0.95);
+    backdrop-filter: blur(16px);
+    border-radius: 0 0 20px 20px;
+    flex-direction: column;
+    gap: 25px;
+    padding: 30px 0;
+    text-align: center;
+
+    /* hidden state */
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: all 0.35s ease;
+  }
+
+  .nav-links.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+/* HAMBURGER ANIMATION */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+@media (max-width: 768px) {
+
+  /* hide normal nav */
+  .nav-links {
+    display: flex;
+    position: absolute;
+    top: 90px;
+    left: 0;
+    width: 100%;
+
+    flex-direction: column;   /* VERTICAL */
+    align-items: center;
+    gap: 25px;
+
+    background: rgba(15,23,42,0.95);
+    backdrop-filter: blur(16px);
+    border-radius: 0 0 20px 20px;
+    padding: 30px 0;
+
+    /* hidden by default */
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    transition: all 0.35s ease;
+  }
+
+  /* show when hamburger clicked */
+  .nav-links.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* show hamburger */
+  .hamburger {
+    display: flex;
+  }
+}
+html {
+  scroll-behavior: smooth;
+}
 
